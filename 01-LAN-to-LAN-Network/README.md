@@ -45,7 +45,7 @@ PC2 --/                          |                    \-- Server2
 
 *This diagram is conceptual; consult the screenshot for the precise topology.*
 
-![Final topology showing green link indicators](images/07-final-link-status.png)
+![Final topology showing green link indicators](07-final-link-status.png)
 
 ## Implementation and Troubleshooting
 
@@ -53,13 +53,13 @@ PC2 --/                          |                    \-- Server2
 
 I started by placing the required routers, switches, hosts, servers, and other devices in the Packet Tracer workspace, grouping them by branch.
 
-![Initial device placement](images/01-device-placement.png)
+![Initial device placement](01-device-placement.png)
 
 ### 2. Build the two LANs
 
 I connected the New York PCs to Switch1 and the Tokyo servers to Switch2. The local Ethernet links turned green, indicating active links in the simulation. This alone does not establish IP-level reachability.
 
-![Separate New York and Tokyo LANs](images/02-local-area-networks.png)
+![Separate New York and Tokyo LANs](02-local-area-networks.png)
 
 ### 3. Add the inter-site devices
 
@@ -67,7 +67,7 @@ I added the branch routers, firewall appliances, intermediate Internet router, a
 
 Routers forward traffic between different IP networks once addressing and routes are configured. Firewalls enforce traffic rules **only when configured with appropriate policies**; merely placing them in the path is not proof of security.
 
-![Initial full topology with red links](images/03-full-topology-initial-status.png)
+![Initial full topology with red links](03-full-topology-initial-status.png)
 
 ### 4. Diagnose the router interfaces
 
@@ -80,7 +80,7 @@ Router# show ip interface brief
 
 The output indicated that several interfaces were **administratively down**, meaning they were disabled through configuration.
 
-![Router interface diagnostics](images/04-router-interface-diagnostics.png)
+![Router interface diagnostics](04-router-interface-diagnostics.png)
 
 ### 5. Enable the required branch interfaces
 
@@ -104,13 +104,13 @@ Router# show ip interface brief
 
 *The commands above are a cleaned-up example of the documented procedure. Enable only interfaces actually connected and intended for use. `no shutdown` does not by itself guarantee an `up/up` state.*
 
-![Enabling branch-router interfaces](images/05-enabling-router-interfaces.png)
+![Enabling branch-router interfaces](05-enabling-router-interfaces.png)
 
 ### 6. Isolate the remaining down links
 
 The branch-router links improved, but the connections around the intermediate Internet router remained red. I identified that router as the next device requiring investigation.
 
-![Partial connectivity restored](images/06-partial-connectivity-restored.png)
+![Partial connectivity restored](06-partial-connectivity-restored.png)
 
 ### 7. Enable the intermediate router interfaces
 
@@ -118,7 +118,7 @@ I repeated the interface checks and enablement process on the intermediate route
 
 **Result:** The simulation's link status recovered. Successful New York-to-Tokyo packet delivery has **not** yet been demonstrated.
 
-![Final link status](images/07-final-link-status.png)
+![Final link status](07-final-link-status.png)
 
 ## Troubleshooting Summary
 
