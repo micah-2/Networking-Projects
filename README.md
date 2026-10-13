@@ -8,7 +8,7 @@ I use these projects to practice networking fundamentals and build a record of m
 
 | Project | Topics | Status |
 | --- | --- | --- |
-| [01 — LAN-to-LAN Network Connectivity & Router Troubleshooting](01-LAN-to-LAN-Network/README.md) | LAN topology, switches, routers, interface diagnostics, `show ip interface brief`, `no shutdown` | Link-state troubleshooting documented; end-to-end IP connectivity not yet verified |
+| [01 — LAN-to-LAN Network Topology Setup & Interface Troubleshooting](01-LAN-to-LAN-Network/README.md) | LAN topology, switches, routers, interface diagnostics, `show ip interface brief`, `no shutdown` | Topology assembly and router interface setup complete |
 
 ## Tools and Topics
 
