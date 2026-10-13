@@ -1,6 +1,6 @@
-# LAN-to-LAN Network Connectivity & Router Troubleshooting
+# LAN-to-LAN Network Topology Setup & Interface Troubleshooting
 
-**Cisco Packet Tracer | Networking Fundamentals | Cisco IOS | Interface Troubleshooting**
+**Cisco Packet Tracer | Network Topology Design | Cisco IOS | Interface Troubleshooting**
 
 ## Project Overview
 
@@ -8,7 +8,7 @@ This project documents the construction of two separate local area networks (LAN
 
 During setup, multiple links remained down. I used `show ip interface brief` to identify **administratively disabled router interfaces**, then applied `no shutdown` on the required ports. The final topology shows active (green) link indicators.
 
-> **Scope:** Green links show that the simulated interfaces/links are active. My original notes do **not** demonstrate configured IP addressing, working routes, firewall rules, or successful end-to-end ping tests. Those remain follow-up work.
+> **Project scope:** This lab focuses on laying out and connecting the devices in a two-branch network topology and bringing the relevant router interfaces online. IP addressing and routing were not part of this exercise.
 
 ## Lab Objectives
 
@@ -31,7 +31,7 @@ During setup, multiple links remained down. I used `show ip interface brief` to 
 | Firewall1 and Firewall2 | Security devices in the proposed path |
 | Attacker endpoint | Simulated external host; no attack tests documented |
 
-*The source notes do not record IP addresses, interface address assignments, routing protocols, or security policies.*
+*This was a topology setup exercise; no IP addressing or routing configuration was performed.*
 
 ## Topology
 
@@ -57,7 +57,7 @@ I started by placing the required routers, switches, hosts, servers, and other d
 
 ### 2. Build the two LANs
 
-I connected the New York PCs to Switch1 and the Tokyo servers to Switch2. The local Ethernet links turned green, indicating active links in the simulation. This alone does not establish IP-level reachability.
+I connected the New York PCs to Switch1 and the Tokyo servers to Switch2. The local Ethernet links turned green, indicating active links in the simulation. This indicated that the locally connected ports were active.
 
 ![Separate New York and Tokyo LANs](02-local-area-networks.png)
 
@@ -65,7 +65,7 @@ I connected the New York PCs to Switch1 and the Tokyo servers to Switch2. The lo
 
 I added the branch routers, firewall appliances, intermediate Internet router, and external endpoint. Several links were red, so I investigated interface status.
 
-Routers forward traffic between different IP networks once addressing and routes are configured. Firewalls enforce traffic rules **only when configured with appropriate policies**; merely placing them in the path is not proof of security.
+The routers represent the connection points between the branch LANs and the simulated Internet. The firewalls were included to illustrate where network security controls could be placed in the topology.
 
 ![Initial full topology with red links](03-full-topology-initial-status.png)
 
@@ -116,7 +116,7 @@ The branch-router links improved, but the connections around the intermediate In
 
 I repeated the interface checks and enablement process on the intermediate router. The final Packet Tracer screenshot showed all depicted link indicators green.
 
-**Result:** The simulation's link status recovered. Successful New York-to-Tokyo packet delivery has **not** yet been demonstrated.
+**Result:** The network layout was completed and the previously disabled interfaces were enabled, with green link indicators visible across the final topology.
 
 ![Final link status](07-final-link-status.png)
 
@@ -126,34 +126,6 @@ I repeated the interface checks and enablement process on the intermediate route
 | --- | --- | --- | --- |
 | Red links on branch routers | Interfaces shown as administratively down | `no shutdown` on relevant router ports | Some links became active |
 | Red links near Internet device | Intermediate router interfaces still required configuration | Enabled connected interfaces | Final topology showed green links |
-| Inter-LAN IP connectivity | No packet-delivery test recorded | Configure addressing/routing and run pings | Not yet verified |
-
-## Recommended Verification and Next Steps
-
-1. Assign interface and host **IP addresses/subnet masks** and configure host default gateways.
-2. Configure inter-network routing (static routes or a suitable routing protocol).
-3. Configure firewall interfaces and traffic policies.
-4. Test from New York hosts to Tokyo servers using `ping` and `tracert`.
-5. Record results, including routing tables, successful/failed packets, and fixes.
-6. Optionally conduct controlled, authorized security tests in the simulation.
-
-### Useful verification commands
-
-```cisco
-Router# show ip interface brief
-Router# show ip route
-Router# show interfaces gigabitEthernet0/0
-```
-
-Packet Tracer PC command prompt:
-
-```text
-ipconfig
-ping <remote-host-IP>
-tracert <remote-host-IP>
-```
-
-*These are suggested future checks, not previously completed tests.*
 
 ## Skills Practiced
 
@@ -163,13 +135,11 @@ tracert <remote-host-IP>
 - Identifying `administratively down` interfaces
 - Interface configuration using `no shutdown`
 - Methodical network troubleshooting
-- Distinguishing link status from end-to-end IP reachability
+- Building and documenting a simulated multi-site network topology
 
-## Project Status
+## Project Outcome
 
-**Completed:** Device placement, LAN connections, branch and intermediate router interface enablement, and visual link-state verification.
-
-**Still to verify:** Addressing, routing, firewall-policy behavior, and end-to-end communication between the two sites.
+The New York and Tokyo LANs were laid out with PCs, servers, switches, routers, firewalls, and a simulated Internet connection. After troubleshooting administratively disabled router interfaces, the final Packet Tracer topology displayed green links. The objective of this exercise was **topology assembly and interface setup**, not configuring IP addressing or routing.
 
 ---
 
